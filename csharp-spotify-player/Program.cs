@@ -20,6 +20,47 @@ foreach(IContenutoRiproducibile Contenuto in PlaylistSpotify)
     Console.WriteLine(Contenuto);
 }
 
+
+Console.WriteLine("Vuoi aggiungere qualcosa alla playlist? (y/n)");
+string RispostaUtente = Console.ReadLine();
+while (RispostaUtente == "y")
+{
+    Console.WriteLine("Si tratta di un brano o di un podcast?");
+    string classeContenuto = Console.ReadLine();
+    Console.WriteLine("Inserisci il nome del contenuto che vuoi inserire");
+    string nomeNuovoContenuto = Console.ReadLine();
+    Console.WriteLine("Inserisci l'autore del contenuto che vuoi inserire");
+    string autoreNuovoContenuto = Console.ReadLine();
+    if (classeContenuto == "brano")
+    {
+        Brano branoUtente = new Brano(nomeNuovoContenuto, autoreNuovoContenuto);
+        PlaylistSpotify.Add(branoUtente);
+    }
+    else if (classeContenuto == "podcast")
+    {
+        Podcast PodcastUtente = new Podcast(nomeNuovoContenuto, autoreNuovoContenuto);
+        PlaylistSpotify.Add(PodcastUtente);
+    }
+    else
+    {
+        Console.WriteLine("Contenuto non riconosciuto");
+    }
+
+    Console.WriteLine("Ecco la tua playlist: \n\n");
+
+    foreach (IContenutoRiproducibile Contenuto in PlaylistSpotify)
+    {
+        Console.WriteLine(Contenuto);
+    }
+
+
+    Console.WriteLine("Vuoi aggiungere qualcosa alla playlist? (y/n)");
+    RispostaUtente = Console.ReadLine();
+
+
+}
+
+
 Console.WriteLine("\n\nQuale vuoi riprodurre?");
 string TitoloDaRiprodurre = Console.ReadLine();
 int indiceInRiproduzione;

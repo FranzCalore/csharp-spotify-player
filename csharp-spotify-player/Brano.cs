@@ -43,6 +43,7 @@ namespace csharp_spotify_player
             Console.WriteLine(nomeBrano + " è stato fermato e riavvolto");
         }
 
+
         public override string ToString()
         {
             return this.GetNomeBrano()+ "\t\t\t\t\t" + this.GetAutoreBrano();

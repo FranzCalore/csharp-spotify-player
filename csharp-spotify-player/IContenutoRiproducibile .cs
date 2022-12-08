@@ -12,6 +12,5 @@ namespace csharp_spotify_player
         public void Play();
         public void Pausa();
         public void Stop();
-
     }
 }
