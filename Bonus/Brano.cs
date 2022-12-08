@@ -32,22 +32,7 @@ namespace csharp_spotify_player
         public void Pausa()
         {
             Console.WriteLine(nome + " è stato messo in pausa");
-        }
 
-        public void Play()
-        {
-            Console.WriteLine(nome + " è stato messo in riproduzione");
-        }
-
-        public void Stop()
-        {
-            Console.WriteLine(nome + " è stato fermato e riavvolto");
-        }
-
-
-        public override string ToString()
-        {
-            return "Brano\t\t"+ this.GetNomeBrano()+ "\t\t\t\t\t" + this.GetAutoreBrano();
         }
     }
 }

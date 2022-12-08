@@ -2,6 +2,7 @@
 
 using csharp_spotify_player;
 using System.Globalization;
+using Bonus;
 
 List <IContenutoRiproducibile> PlaylistSpotify = new List<IContenutoRiproducibile>();
 
@@ -59,11 +60,11 @@ while (RispostaUtente == "y")
 
 
 }
+OrdinaPlaylist(PlaylistSpotify);
 
 
 Console.WriteLine("\n\nQuale vuoi riprodurre?");
 string TitoloDaRiprodurre = Console.ReadLine();
-int indiceInRiproduzione;
 
 for (int i = 0; i<PlaylistSpotify.Count; i++)
 {
@@ -73,8 +74,9 @@ for (int i = 0; i<PlaylistSpotify.Count; i++)
         string nomeBrano = BranoConvertito.GetNomeBrano();
         if (nomeBrano == TitoloDaRiprodurre)
         {
-            indiceInRiproduzione = i;
+            ContenutoAudio.indiceInRiproduzione = i;
             BranoConvertito.Play();
+            Skip();
             break;
         }
     }
@@ -84,9 +86,32 @@ for (int i = 0; i<PlaylistSpotify.Count; i++)
         string nomePodcast = PodcastConvertito.GetNomePodcast();
         if (nomePodcast == TitoloDaRiprodurre)
         {
-            indiceInRiproduzione = i;
+            ContenutoAudio.indiceInRiproduzione = i;
             PodcastConvertito.Play();
+            Skip();
             break;
         }
     }
+}
+
+
+// Funzione
+
+void OrdinaPlaylist(List<IContenutoRiproducibile> Playlist)
+{
+    for(int i = 0; i< Playlist.Count; i++)
+    {
+        ContenutoAudio contenutoaudio = (ContenutoAudio)Playlist[i];
+        contenutoaudio.SetPosizione(i);
+    }
+}
+
+void Skip()
+{
+    ContenutoAudio.indiceInRiproduzione++;
+    if (ContenutoAudio.indiceInRiproduzione == PlaylistSpotify.Count)
+    {
+        ContenutoAudio.indiceInRiproduzione = 0;
+    }
+    PlaylistSpotify[ContenutoAudio.indiceInRiproduzione].Play();
 }

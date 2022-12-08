@@ -40,10 +40,5 @@ namespace csharp_spotify_player
         {
             Console.WriteLine("Il podcast " + nome + " è stato stoppato e riavvolto");
         }
-
-        public override string ToString()
-        {
-            return "Podcast\t\t" + this.GetNomePodcast() + "\t\t\t\t" + this.GetAutorePodcast();
-        }
     }
 }

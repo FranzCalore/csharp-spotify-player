@@ -1,4 +1,5 @@
 ﻿using csharp_spotify_player;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,10 @@ namespace Bonus
     {
         private protected string nome;
         private protected string autore;
+        internal static int indiceInRiproduzione=-1;
+        private int posizione;
 
-        public ContenutoAudio(string nome, string autore)
+        public ContenutoAudio(string nome, string autore, int posizione=-2)
         {
             this.nome = nome;
             this.autore = autore;
@@ -28,14 +31,22 @@ namespace Bonus
             return this.autore;
         }
 
+        public void SetPosizione(int posizione)
+        {
+            this.posizione = posizione;
+        }
+
         public override string ToString()
         {
-            return this.GetNome() + "\t\t\t\t" + this.GetAutore();
+            string stringaStampa = "Nome: " + this.GetNome();
+            stringaStampa= stringaStampa.PadRight(80, ' ');
+            return stringaStampa + " Autore: " + this.GetAutore() + "\n";
         }
 
         public void Play()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(this.nome + " è stato messo in riproduzione");
+            indiceInRiproduzione = this.posizione;
         }
 
         public void Pausa()
@@ -45,7 +56,9 @@ namespace Bonus
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            indiceInRiproduzione = 0;
+            Console.WriteLine(nome + " è stato fermato e riavvolto");
         }
+
     }
 }
