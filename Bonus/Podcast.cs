@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bonus;
 
 namespace csharp_spotify_player
 {
     public class Podcast : ContenutoAudio
     {
-        private string nome;
-        private string autore;
 
-        public Podcast(string nomePodcast, string autorePodcast)
+        public Podcast(string nome, string autore):base(nome, autore)
         {
-            this.nome = nomePodcast;
-            this.autore = autorePodcast;
+            this.nome = nome;
+            this.autore = autore;
         }
 
         public string GetNomePodcast()
@@ -44,7 +43,7 @@ namespace csharp_spotify_player
 
         public override string ToString()
         {
-            return this.GetNomePodcast() + "\t\t\t\t" + this.GetAutorePodcast();
+            return "Podcast\t\t" + this.GetNomePodcast() + "\t\t\t\t" + this.GetAutorePodcast();
         }
     }
 }
